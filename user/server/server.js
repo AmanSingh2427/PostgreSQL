@@ -49,7 +49,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from the uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Signup route
 app.post('/signup', (req, res) => {
@@ -62,11 +62,14 @@ app.post('/signup', (req, res) => {
 
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
+      console.log(username, password, email, fullName, imagePath,'1');
       const newUser = await pool.query(
-        'INSERT INTO aman.users (username, password, email, fullname, image) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-        [username, hashedPassword, email, fullName, imagePath]
+        'INSERT INTO aman.users (username, password, email, full_name, image) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+        [username, hashedPassword, email, fullName, imagePath],
+        console.log(username, password, email, fullName, imagePath,'2')
       );
       res.json(newUser.rows[0]);
+      
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -87,12 +90,16 @@ app.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid username or password' });
     }
     const token = jwt.sign({ userId: user.rows[0].id }, 'your_secret_key');
-    res.json({ token });
+    res.json({ 
+      token, 
+      userImage: user.rows[0].image // Send image URL in the response
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
   }
 });
+
 
 app.get('/', (req, res) => {
   console.log('Home page');

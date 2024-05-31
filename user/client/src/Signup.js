@@ -18,24 +18,15 @@ const Signup = () => {
     formData.append('password', password);
     formData.append('email', email);
     formData.append('fullName', fullName);
-    if (image) formData.append('image', image);   
+    if (image) formData.append('image', image);
 
-    console.log(username);
-    console.log(password);
-    console.log(email);
-    console.log(fullName);
-    console.log(image);
 
     try {
-      const response = await axios.post('http://localhost:5000/signup', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const response = await axios.post('http://localhost:5000/signup', formData);
       console.log(response.data);
       navigate('/login');
     } catch (error) {
-      console.error(error.response.data.message);
+      console.error('Error:', error.response ? error.response.data.message : error.message);
     }
   };
 
@@ -44,41 +35,41 @@ const Signup = () => {
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md text-center">
         <h2 className="text-2xl font-bold mb-6">Signup</h2>
         <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            placeholder="Full Name" 
-            value={fullName} 
-            onChange={(e) => setFullName(e.target.value)} 
-            required 
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
             className="mb-4 p-2 w-full border rounded"
           />
-          <input 
-            type="email" 
-            placeholder="Email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
             className="mb-4 p-2 w-full border rounded"
           />
-          <input 
-            type="text" 
-            placeholder="Username" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-            required 
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
             className="mb-4 p-2 w-full border rounded"
           />
           <div className="relative">
-            <input 
-              type={showPassword ? "text" : "password"} 
-              placeholder="Password" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
               className="mb-4 p-2 w-full border rounded pr-12"
             />
-            <span 
-              onClick={() => setShowPassword(!showPassword)} 
+            <span
+              onClick={() => setShowPassword(!showPassword)}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
             >
               {showPassword ? (
@@ -102,14 +93,14 @@ const Signup = () => {
             onChange={(e) => setImage(e.target.files[0])}
             className="mb-4 p-2 w-full border rounded"
           />
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors"
           >
             Signup
           </button>
-          <button 
-            type="button" 
+          <button
+            type="button"
             onClick={() => navigate('/login')}
             className="w-full mt-2 bg-gray-500 text-white py-2 rounded hover:bg-gray-600 transition-colors"
           >

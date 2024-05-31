@@ -14,6 +14,7 @@ const Login = () => {
       console.log(response.data);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', username); // Store username
+      localStorage.setItem('userImage', response.data.userImage); // Store user image
       navigate('/home'); // Redirect to home page
     } catch (error) {
       console.error(error.response.data.message);
