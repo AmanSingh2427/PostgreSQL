@@ -23,6 +23,7 @@ const Navbar = () => {
         <div className="flex space-x-4 items-center">
           {username ? (
             <>
+              <Link to="/update-profile" className="text-blue-400 hover:text-blue-700 transition-colors">Update Profile</Link>
               <img 
                 src={userImage ? `http://localhost:5000/${userImage}` : "default-image-url"} 
                 alt="User profile" 

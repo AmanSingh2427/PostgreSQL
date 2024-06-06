@@ -18,78 +18,37 @@ const Sidebar = () => {
       <div className="p-4">
         <img src={reactLogo} className="h-24 w-auto" alt="React logo" />
       </div>
-      
+
       <ul className="p-2">
 
-       <li className="py-2 px-4 hover:bg-gray-300 relative">
-      <a href="#" className="block flex items-center justify-between">
-        <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <RiComputerLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Dashboard
-        </div>
-        <BsChevronDown className="ml-2" />
-      </a>
-      {/* Dropdown menu */}
-      <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
-        {/* Dropdown items */}
-        <li className="py-1 px-3 hover:bg-gray-700">
-          <a href="#">Dropdown Item 1</a>
+        <li className="py-2 px-4 hover:bg-gray-300 relative">
+          <a href="#" className="block flex items-center justify-between">
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <RiComputerLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Dashboard
+            </div>
+            <BsChevronDown className="ml-2" />
+          </a>
+          {/* Dropdown menu */}
+          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
+            {/* Dropdown items */}
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 1</a>
+            </li>
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 2</a>
+            </li>
+            {/* Add more dropdown items as needed */}
+          </ul>
         </li>
-        <li className="py-1 px-3 hover:bg-gray-700">
-          <a href="#">Dropdown Item 2</a>
-        </li>
-        {/* Add more dropdown items as needed */}
-      </ul>
-    </li>
         {/* Add other sidebar items here */}
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <RiMastercardLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Master
-        </div>
-            <BsChevronDown className="ml-2" />
-          </a>
-          {/* Dropdown menu */}
-          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
-            {/* Dropdown items */}
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 1</a>
-            </li>
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 2</a>
-            </li>
-            {/* Add more dropdown items as needed */}
-          </ul>
-        </li>
-        
-        <li className="py-2 px-4 hover:bg-gray-300 relative">
-          <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <BsCalendarEventFill className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Events
-        </div>
-            <BsChevronDown className="ml-2" />
-          </a>
-          {/* Dropdown menu */}
-          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
-            {/* Dropdown items */}
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 1</a>
-            </li>
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 2</a>
-            </li>
-            {/* Add more dropdown items as needed */}
-          </ul>
-        </li>
-        <li className="py-2 px-4 hover:bg-gray-300 relative">
-          <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <IoDocumentSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Procurement
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <RiMastercardLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Master
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -107,10 +66,30 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaShoppingCart className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-         Order
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <BsCalendarEventFill className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Events
+            </div>
+            <BsChevronDown className="ml-2" />
+          </a>
+          {/* Dropdown menu */}
+          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
+            {/* Dropdown items */}
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 1</a>
+            </li>
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 2</a>
+            </li>
+            {/* Add more dropdown items as needed */}
+          </ul>
+        </li>
+        <li className="py-2 px-4 hover:bg-gray-300 relative">
+          <a href="#" className="block flex items-center justify-between">
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <IoDocumentSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Procurement
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -128,10 +107,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <IoDocumentsSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          ASN
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaShoppingCart className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Order
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -149,10 +128,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaUserCircle className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Accounts
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <IoDocumentsSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              ASN
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -170,10 +149,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaUpload className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Doc Upload
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaUserCircle className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Accounts
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -191,10 +170,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaArrowUp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Stock
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaUpload className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Doc Upload
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -212,10 +191,31 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaStar  className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Quality
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaArrowUp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Stock
+            </div>
+            <BsChevronDown className="ml-2" />
+          </a>
+          {/* Dropdown menu */}
+          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
+            {/* Dropdown items */}
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 1</a>
+            </li>
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 2</a>
+            </li>
+            {/* Add more dropdown items as needed */}
+          </ul>
+        </li>
+
+        <li className="py-2 px-4 hover:bg-gray-300 relative">
+          <a href="#" className="block flex items-center justify-between">
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaStar className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Quality
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -234,74 +234,33 @@ const Sidebar = () => {
 
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
-      <a href="#" className="block flex items-center justify-between">
-        <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <RiComputerLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Dashboard
-        </div>
-        <BsChevronDown className="ml-2" />
-      </a>
-      {/* Dropdown menu */}
-      <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
-        {/* Dropdown items */}
-        <li className="py-1 px-3 hover:bg-gray-700">
-          <a href="#">Dropdown Item 1</a>
+          <a href="#" className="block flex items-center justify-between">
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <RiComputerLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Dashboard
+            </div>
+            <BsChevronDown className="ml-2" />
+          </a>
+          {/* Dropdown menu */}
+          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
+            {/* Dropdown items */}
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 1</a>
+            </li>
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 2</a>
+            </li>
+            {/* Add more dropdown items as needed */}
+          </ul>
         </li>
-        <li className="py-1 px-3 hover:bg-gray-700">
-          <a href="#">Dropdown Item 2</a>
-        </li>
-        {/* Add more dropdown items as needed */}
-      </ul>
-    </li>
         {/* Add other sidebar items here */}
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <RiMastercardLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Master
-        </div>
-            <BsChevronDown className="ml-2" />
-          </a>
-          {/* Dropdown menu */}
-          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
-            {/* Dropdown items */}
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 1</a>
-            </li>
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 2</a>
-            </li>
-            {/* Add more dropdown items as needed */}
-          </ul>
-        </li>
-        
-        <li className="py-2 px-4 hover:bg-gray-300 relative">
-          <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <BsCalendarEventFill className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Events
-        </div>
-            <BsChevronDown className="ml-2" />
-          </a>
-          {/* Dropdown menu */}
-          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
-            {/* Dropdown items */}
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 1</a>
-            </li>
-            <li className="py-1 px-3 hover:bg-gray-700">
-              <a href="#">Dropdown Item 2</a>
-            </li>
-            {/* Add more dropdown items as needed */}
-          </ul>
-        </li>
-        <li className="py-2 px-4 hover:bg-gray-300 relative">
-          <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <IoDocumentSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Procurement
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <RiMastercardLine className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Master
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -319,10 +278,30 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaShoppingCart className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-         Order
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <BsCalendarEventFill className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Events
+            </div>
+            <BsChevronDown className="ml-2" />
+          </a>
+          {/* Dropdown menu */}
+          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
+            {/* Dropdown items */}
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 1</a>
+            </li>
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 2</a>
+            </li>
+            {/* Add more dropdown items as needed */}
+          </ul>
+        </li>
+        <li className="py-2 px-4 hover:bg-gray-300 relative">
+          <a href="#" className="block flex items-center justify-between">
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <IoDocumentSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Procurement
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -340,10 +319,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <IoDocumentsSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          ASN
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaShoppingCart className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Order
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -361,10 +340,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaUserCircle className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Accounts
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <IoDocumentsSharp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              ASN
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -382,10 +361,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaUpload className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Doc Upload
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaUserCircle className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Accounts
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -403,10 +382,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaArrowUp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Stock
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaUpload className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Doc Upload
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -424,10 +403,10 @@ const Sidebar = () => {
 
         <li className="py-2 px-4 hover:bg-gray-300 relative">
           <a href="#" className="block flex items-center justify-between">
-          <div className="flex items-center"> {/* Added flex container for icon and text */}
-          <FaStar  className="mr-2" /> {/* Added margin-right to create space between icon and text */}
-          Quality
-        </div>
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaArrowUp className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Stock
+            </div>
             <BsChevronDown className="ml-2" />
           </a>
           {/* Dropdown menu */}
@@ -443,8 +422,26 @@ const Sidebar = () => {
           </ul>
         </li>
 
-
-
+        <li className="py-2 px-4 hover:bg-gray-300 relative">
+          <a href="#" className="block flex items-center justify-between">
+            <div className="flex items-center"> {/* Added flex container for icon and text */}
+              <FaStar className="mr-2" /> {/* Added margin-right to create space between icon and text */}
+              Quality
+            </div>
+            <BsChevronDown className="ml-2" />
+          </a>
+          {/* Dropdown menu */}
+          <ul className="absolute left-full top-0 mt-2 bg-gray-800 text-white rounded-lg shadow-md hidden">
+            {/* Dropdown items */}
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 1</a>
+            </li>
+            <li className="py-1 px-3 hover:bg-gray-700">
+              <a href="#">Dropdown Item 2</a>
+            </li>
+            {/* Add more dropdown items as needed */}
+          </ul>
+        </li>
       </ul>
     </div>
   );

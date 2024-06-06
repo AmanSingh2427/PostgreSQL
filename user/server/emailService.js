@@ -1,34 +1,35 @@
-// // emailService.js
+// emailService.js
 
-// const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: 'thakuraman8630@gmail.com',
-//     pass: 'Aman@999$ingh',
-//   },
-//   secure: false, // Use TLS
-//   tls: {
-//     rejectUnauthorized: false, // Ignore certificate errors
-//   },
-// });
+// Create a transporter object
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // use SSL
+  auth: {
+    user: 'thakuraman8630@gmail.com',
+    pass: 'sdqgihpkffcyipzj',
+  }
+});
 
-// const sendEmail = (to, subject, text) => {
-//   const mailOptions = {
-//     from: 'thakuraman8630@gmail.com',
-//     to,
-//     subject,
-//     text,
-//   };
 
-//   transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//       console.log('Error sending email:', error);
-//     } else {
-//       console.log('Email sent:', info.response);
-//     }
-//   });
-// };
+// Function to send email
+const sendEmail = (to, subject, text) => {
+  const mailOptions = {
+    from: 'thakuraman8630@gmail.com',
+    to,
+    subject,
+    text,
+  };
 
-// module.exports = sendEmail;
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Error sending email:', error);
+    } else {
+      console.log('Email sent:', info.response);
+    }
+  });
+};
+
+module.exports = sendEmail;
