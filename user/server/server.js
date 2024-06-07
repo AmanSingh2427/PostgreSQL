@@ -1,6 +1,3 @@
-// sdqgihpkffcyipzj
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,7 +6,8 @@ const jwt = require('jsonwebtoken');
 const { Pool } = require('pg');
 const multer = require('multer');
 const path = require('path');
-const sendEmail = require('./emailService'); // Ensure this is correctly imported
+const sendEmail = require('./emailService');
+const crypto = require('crypto');
 
 const pool = new Pool({
   user: 'postgres',
@@ -19,7 +17,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Set storage engine for multer
 const storage = multer.diskStorage({
   destination: './uploads/',
   filename: (req, file, cb) => {
@@ -27,7 +24,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// Initialize upload
 const upload = multer({
   storage: storage,
   limits: { fileSize: 1000000 },
@@ -36,7 +32,6 @@ const upload = multer({
   },
 }).single('image');
 
-// Check file type
 function checkFileType(file, cb) {
   const filetypes = /jpeg|jpg|png|gif/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -55,6 +50,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Generate OTP
+const generateOTP = () => {
+  return crypto.randomInt(100000, 999999).toString();
+};
+
 // Signup route
 app.post('/signup', (req, res) => {
   upload(req, res, async (err) => {
@@ -65,7 +65,6 @@ app.post('/signup', (req, res) => {
     const imagePath = req.file ? req.file.path : null;
 
     try {
-      // Check if email already exists
       const existingUser = await pool.query('SELECT * FROM aman.users WHERE email = $1', [email]);
       if (existingUser.rows.length > 0) {
         return res.status(400).send({ message: 'Email already exists' });
@@ -77,7 +76,6 @@ app.post('/signup', (req, res) => {
         [username, hashedPassword, email, fullName, imagePath]
       );
 
-      // Send email on successful registration
       sendEmail(
         email,
         'Registration Successful',
@@ -108,7 +106,7 @@ app.post('/login', async (req, res) => {
     const token = jwt.sign({ userId: user.rows[0].id }, 'your_secret_key');
     res.json({ 
       token, 
-      userImage: user.rows[0].image // Send image URL in the response
+      userImage: user.rows[0].image
     });
   } catch (err) {
     console.error(err.message);
@@ -164,7 +162,6 @@ app.post('/update-profile', (req, res) => {
 
       const updatedUser = await pool.query(updateQuery, queryParams);
 
-      // Send email on successful profile update
       sendEmail(
         email,
         'Profile Updated',
@@ -179,6 +176,99 @@ app.post('/update-profile', (req, res) => {
     }
   });
 });
+
+// Forgot password route
+// Forgot password route
+app.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await pool.query('SELECT * FROM aman.users WHERE email = $1', [email]);
+    if (user.rows.length === 0) {
+      return res.status(400).json({ message: 'Email not found' });
+    }
+
+    const otp = generateOTP();
+    const expiresAt = new Date(Date.now() + 15 * 60000); // OTP expires in 15 minutes
+
+    await pool.query(
+      'UPDATE aman.users SET otp = $1, otp_expires_at = $2 WHERE email = $3',
+      [otp, expiresAt, email]
+    );
+    console.log(otp, expiresAt, email);
+
+    sendEmail(
+      email,
+      'Password Reset OTP',
+      `Your OTP for password reset is ${otp}. It will expire in 15 minutes.`
+    );
+
+    res.status(200).json({ message: 'OTP sent to your email', otp }); // Return the OTP to the client
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+
+// Verify OTP route
+app.post('/verify-otp', async (req, res) => {
+  const { email, otp } = req.body;
+  try {
+    const user = await pool.query(
+      'SELECT * FROM aman.users WHERE email = $1 AND otp = $2 AND otp_expires_at > NOW()',
+      [email, otp]
+    );
+
+    if (user.rows.length === 0) {
+      return res.status(400).json({ message: 'Invalid or expired OTP' });
+    }
+
+    // await pool.query('UPDATE aman.users SET otp = NULL, otp_expires_at = NULL WHERE email = $1', [email]);
+
+    const token = jwt.sign({ userId: user.rows[0].id }, 'your_secret_key');
+
+    res.status(200).json({ message: 'OTP verified', token });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// Reset password route
+app.post('/reset-password', async (req, res) => {
+  const { otp, newPassword } = req.body;
+  const otp_val = otp;
+  console.log(otp_val); // Check if the OTP value is logged correctly
+
+  try {
+    // Fetch the user based on the provided OTP
+    const user = await pool.query('SELECT * FROM aman.users WHERE otp = $1', [otp_val]);
+    console.log(user.rows); // Log the user data to check if it's fetched correctly
+
+    if (user.rows.length === 0) {
+      return res.status(400).json({ message: 'Invalid OTP' });
+    }
+
+    
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    // Update the user's password in the database
+    await pool.query('UPDATE aman.users SET password = $1 WHERE otp = $2', [hashedPassword, otp_val]);
+
+    // Clear OTP and expiry in the database
+    await pool.query('UPDATE aman.users SET otp = NULL, otp_expires_at = NULL WHERE otp = $1', [otp_val]);
+
+    res.status(200).json({ message: 'Password updated successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+
+
 
 app.get('/', (req, res) => {
   console.log('Home page');

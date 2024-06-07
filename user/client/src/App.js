@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute';
 import About from './components/About';
 import Contact from './components/Contact';
 import UpdateProfile from './components/UpdateProfile';  // Import the UpdateProfile component
+import ResetPassword from './ResetPassword';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/reset-password' element={<ResetPassword/>}/>
           <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
           <Route path="/about" element={<PrivateRoute><About /></PrivateRoute>} />
           <Route path="/contact" element={<PrivateRoute><Contact /></PrivateRoute>} />
